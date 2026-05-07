@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
+<head><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <meta charset="UTF-8">
 <title>Tech Support Bot</title>
 
@@ -51,9 +51,19 @@
     placeholder="Digite sua pergunta..."
   >
 
-  <button class="send" onclick="enviarPergunta()">
-    Enviar
-  </button>
+ <button class="send" onclick="enviarPergunta()">
+  Enviar
+</button>
+
+<!-- BOTÃO DE VOZ -->
+<button
+  type="button"
+  id="voiceBtn"
+  class="btn btn-danger rounded-circle shadow ms-2"
+  style="width: 60px; height: 60px;"
+>
+  <i class="bi bi-mic-fill" style="font-size: 1.5rem;"></i>
+</button>
 
 </div>
 

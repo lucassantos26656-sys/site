@@ -1,13 +1,30 @@
-let IA_ATUAL = "openai";
+/* =========================
+   KEYS.JSON
+========================= */
 
-const apiKey = "6ot2P04HMJwFGlDTQ";
-const geminiKey = "0";
+const keys = await fetch("keys.json")
+.then(res => res.json());
+
+const apiKey = keys.apiKey;
+
+const geminiKey = keys.geminiKey;
+
+const apisppechkey = keys.apisppechkey;
+
+const AZURE_SPEECH_REGION = keys.AZURE_SPEECH_REGION;
+
+
+let IA_ATUAL = "openai";
 
 const endpoint =
 "https://georg-ml7854jc-swedencentral.cognitiveservices.azure.com/openai/responses?api-version=2025-04-01-preview";
 
 const geminiEndpoint =
 "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent";
+
+const ttsEndpoint =
+"https://swedencentral.tts.speech.microsoft.com/cognitiveservices/v1";
+
 
 /* TOGGLE IA */
 const iaToggle = document.getElementById("iaToggle");
@@ -94,6 +111,53 @@ document.getElementById("thinking").remove();
 
 chat.innerHTML += `<div class="message">${resposta}</div>`;
 
+/* ==================================
+   TEXT TO SPEECH
+================================== */
+
+/* ==================================
+   IA VOICE (OPENAI TTS)
+================================== */
+
+const audioResponse = await fetch(ttsEndpoint,{
+method:"POST",
+headers:{
+"Content-Type":"application/json",
+"api-key":apiKey
+},
+body:JSON.stringify({
+
+input:resposta,
+
+voice:"nova",
+
+response_format:"mp3"
+
+})
+});
+
+if(!audioResponse.ok){
+
+console.error("Erro TTS");
+
+const erroTexto = await audioResponse.text();
+
+console.log(erroTexto);
+
+return;
+
+}
+
+const audioBlob = await audioResponse.blob();
+
+const audioUrl = URL.createObjectURL(audioBlob);
+
+const audio = new Audio(audioUrl);
+
+audio.volume = 1;
+
+await audio.play();
+
 }catch(e){
 
 document.getElementById("thinking").innerHTML =
@@ -126,3 +190,41 @@ if(e.key==="Enter"){
 enviarPergunta();
 }
 });
+
+/* VOZ */
+const voiceBtn = document.getElementById("voiceBtn");
+
+const recognition =
+new(window.SpeechRecognition || window.webkitSpeechRecognition)();
+
+recognition.lang = "pt-BR";
+
+voiceBtn.addEventListener("click", ()=>{
+
+recognition.start();
+
+voiceBtn.innerHTML =
+'<i class="bi bi-mic-mute-fill" style="font-size:1.5rem;"></i>';
+
+});
+
+recognition.onresult = (event)=>{
+
+const texto =
+event.results[0][0].transcript;
+
+document.getElementById("userInput").value = texto;
+
+voiceBtn.innerHTML =
+'<i class="bi bi-mic-fill" style="font-size:1.5rem;"></i>';
+
+enviarPergunta();
+
+};
+
+recognition.onerror = ()=>{
+
+voiceBtn.innerHTML =
+'<i class="bi bi-mic-fill" style="font-size:1.5rem;"></i>';
+
+};
