@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<head>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
 <meta charset="UTF-8">
+
 <title>Tech Support Bot</title>
 
 <link rel="stylesheet" href="style.css">
@@ -15,20 +20,27 @@
 
 <!-- HEADER -->
 <div class="header">
+
   <div class="title">🤖 Tech Support Bot</div>
 
   <div class="right">
 
     <span class="online">● Online</span>
 
-    <!-- TOGGLE IA (BOOTSTRAP) -->
+    <!-- TOGGLE IA -->
     <input type="checkbox" class="btn-check" id="iaToggle" autocomplete="off">
-    <label class="btn btn-primary" for="iaToggle">🤖 OpenAI</label>
+
+    <label class="btn btn-primary" for="iaToggle">
+      🤖 OpenAI
+    </label>
 
     <!-- DARK MODE -->
-    <button id="themeBtn" class="theme-toggle">🌙</button>
+    <button id="themeBtn" class="theme-toggle">
+      🌙
+    </button>
 
   </div>
+
 </div>
 
 <!-- CHAT -->
@@ -51,23 +63,25 @@
     placeholder="Digite sua pergunta..."
   >
 
- <button class="send" onclick="enviarPergunta()">
-  Enviar
-</button>
+  <button class="send" onclick="enviarPergunta()">
+    Enviar
+  </button>
 
-<!-- BOTÃO DE VOZ -->
-<button
-  type="button"
-  id="voiceBtn"
-  class="btn btn-danger rounded-circle shadow ms-2"
-  style="width: 60px; height: 60px;"
->
-  <i class="bi bi-mic-fill" style="font-size: 1.5rem;"></i>
-</button>
+  <!-- BOTÃO VOZ -->
+  <button
+    type="button"
+    id="voiceBtn"
+    class="btn btn-danger rounded-circle shadow ms-2"
+    style="width:60px;height:60px;"
+  >
+
+    <i class="bi bi-mic-fill" style="font-size:1.5rem;"></i>
+
+  </button>
 
 </div>
 
-<script src="script.js"></script>
+<script type="module" src="script.js"></script>
 
 </body>
 </html>

@@ -5,12 +5,11 @@
   --primary: #6d28d9;
 }
 
-bbody.dark {
+body.dark {
   --bg: #0f172a;
   --text: #ffffff;
   --card: #1e293b;
 }
-
 
 body {
   margin: 0;
@@ -103,83 +102,54 @@ input {
   margin-left: 10px;
   border-radius: 8px;
 }
-/* =========================
-   DARK MODE CORRIGIDO
-========================= */
+
+/* DARK MODE */
 
 body.dark {
-
   background: #0f172a;
   color: #ffffff;
-
 }
 
-/* HEADER */
 body.dark .header{
-
   background:#1e293b;
   color:white;
-
 }
 
-/* CHAT */
 body.dark .message{
-
   background:#1e293b;
   color:white;
   border:1px solid #334155;
-
 }
 
-/* INPUT AREA */
 body.dark .input-area{
-
   background:#1e293b;
   border-top:1px solid #334155;
-
 }
 
-/* INPUT */
 body.dark input{
-
   background:#0f172a;
   color:white;
   border:1px solid #475569;
-
 }
 
 body.dark input::placeholder{
-
   color:#cbd5e1;
-
 }
 
-/* BOTÃO DARK MODE */
 body.dark .theme-toggle{
-
   background:#334155;
   color:white;
-
 }
 
-/* BOTÃO ENVIAR */
 body.dark .send{
-
   background:#7c3aed;
-
 }
 
-/* BOTÃO IA */
 body.dark .btn-primary{
-
   background:#7c3aed;
   border:none;
-
 }
 
-/* ONLINE */
 body.dark .online{
-
   color:#22c55e;
-
 }
